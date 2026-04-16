@@ -34,7 +34,7 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 (async () => {
   try {
     await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: commands });
-    console.log("✅ 슬래시 명령 등록 완료!");
+    console.log("슬래시 명령 등록 완료!");
   } catch (err) {
     console.error("명령어 등록 실패:", err);
   }
@@ -43,7 +43,6 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 // SAY 상태 파일 경로
 const statePath = path.join(__dirname, "data", "state.json");
 
-// 일반 메시지 SAY 기능 (대문자만, 원본 메시지 삭제 + toggle 반영)
 client.on("messageCreate", async msg => {
   if (msg.author.bot) return;
   if (!msg.content.startsWith("SAY ")) return;

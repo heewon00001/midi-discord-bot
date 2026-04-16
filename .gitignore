@@ -1,0 +1,13 @@
+# 환경변수 (절대 커밋 금지!)
+.env
+
+# 백업 폴더
+backup/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# 시스템 파일
+.DS_Store
+Thumbs.db
