@@ -36,7 +36,7 @@ export default {
       });
 
       if (!res.ok) throw new Error(`API 오류: ${res.status}`);
-      const buffer = Buffer.from(await res.arrayBuffer());피
+      const buffer = Buffer.from(await res.arrayBuffer());
       const filePath = path.resolve(`./tts_${Date.now()}.mp3`);
       fs.writeFileSync(filePath, buffer);
 

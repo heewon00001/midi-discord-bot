@@ -1,13 +1,12 @@
-# 환경변수 (절대 커밋 금지!)
 .env
+node_modules/
 
-# 백업 폴더
+# 런타임 상태 파일 (서버마다 달라야 함)
+data/state.json
+
+# 임시/불필요 파일
+새 텍스트 문서.txt
 backup/
 
-# Node
-node_modules/
-npm-debug.log*
-
-# 시스템 파일
-.DS_Store
-Thumbs.db
+# WAV 샘플 파일 (용량 큼 - 로컬에서 직접 넣기)
+samples/
