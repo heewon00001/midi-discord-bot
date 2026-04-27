@@ -43,6 +43,14 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 // SAY 상태 파일 경로
 const statePath = path.join(__dirname, "data", "state.json");
 
+// data 폴더 & state.json 없으면 자동 생성
+if (!fs.existsSync(path.join(__dirname, "data"))) {
+  fs.mkdirSync(path.join(__dirname, "data"));
+}
+if (!fs.existsSync(statePath)) {
+  fs.writeFileSync(statePath, JSON.stringify({ sayEnabled: false }));
+}
+
 // 일반 메시지 SAY 기능 (대문자만, 원본 메시지 삭제 + toggle 반영)
 client.on("messageCreate", async msg => {
   if (msg.author.bot) return;
@@ -75,7 +83,7 @@ client.on("interactionCreate", async interaction => {
   }
 });
 
-client.once("ready", () => {
+client.once("clientReady", () => {
   console.log(`🤖 로그인 완료! ${client.user.tag}`);
 });
 
