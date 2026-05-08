@@ -17,7 +17,7 @@ export default {
 
   async execute(interaction) {
     if (interaction.user.id !== OWNER_ID)
-      return interaction.reply({ content: "이건 히원만 가능 😅", ephemeral: true });
+      return interaction.reply({ content: "이건 히원만 가능해!", ephemeral: true });
 
     // 파일 읽기
     const state = JSON.parse(fs.readFileSync(statePath, "utf8"));

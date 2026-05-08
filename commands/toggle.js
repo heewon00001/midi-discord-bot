@@ -9,8 +9,8 @@ export default {
     .setDescription("모든 명령어를 히원만 쓸 수 있게 하거나 해제함!"),
   async execute(interaction) {
     if (interaction.user.id !== OWNER_ID)
-      return interaction.reply({ content: "이건 히원만 가능 😅", ephemeral: true });
+      return interaction.reply({ content: "이건 히원만 가능해!", ephemeral: true });
     ownerOnly = !ownerOnly;
-    await interaction.reply({ content: `✅ 이제 ${ownerOnly ? "히원만" : "모두"} 사용 가능!` });
+    await interaction.reply({ content: `이제 ${ownerOnly ? "히원만" : "모두"} 사용 가능!` });
   },
 };

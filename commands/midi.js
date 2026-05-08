@@ -14,7 +14,7 @@ import { Readable } from "stream";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 🎶 음 높이와 파일 이름 매핑
+//  음 높이와 파일 이름 매핑
 function getSamplePath(note) {
   const match = note.match(/^([A-Ga-g#b]+)(\d)$/);
   if (!match) return null;
@@ -30,7 +30,7 @@ function getSamplePath(note) {
   return fs.existsSync(filePath) ? filePath : null;
 }
 
-// 🎹 미디 명령어
+//  미디 명령어
 export default {
   data: new SlashCommandBuilder()
     .setName("midi")
@@ -47,7 +47,7 @@ export default {
     const channel = interaction.member.voice.channel;
 
     if (!channel) {
-      return interaction.reply("🎧 먼저 음성 채널에 들어가줘!");
+      return interaction.reply(" 먼저 음성 채널에 들어가줘!");
     }
 
     let connection = getVoiceConnection(interaction.guild.id);
@@ -62,7 +62,7 @@ export default {
     const player = createAudioPlayer();
     connection.subscribe(player);
 
-    await interaction.reply(`🎹 미디가 연주를 시작합니다! (${notesInput})`);
+    await interaction.reply(`미디가 연주를 시작합니다! (${notesInput})`);
 
     const notes = notesInput.split(/[-]+/g).filter(Boolean);
 

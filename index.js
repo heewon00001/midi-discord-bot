@@ -34,13 +34,12 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 (async () => {
   try {
     await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: commands });
-    console.log("✅ 슬래시 명령 등록 완료!");
+    console.log(" 슬래시 명령 등록 완료!");
   } catch (err) {
     console.error("명령어 등록 실패:", err);
   }
 })();
 
-// SAY 상태 파일 경로
 const statePath = path.join(__dirname, "data", "state.json");
 
 // data 폴더 & state.json 없으면 자동 생성
@@ -51,12 +50,12 @@ if (!fs.existsSync(statePath)) {
   fs.writeFileSync(statePath, JSON.stringify({ sayEnabled: false }));
 }
 
-// 일반 메시지 SAY 기능 (대문자만, 원본 메시지 삭제 + toggle 반영)
+// 일반 메시지 SAY 기능
 client.on("messageCreate", async msg => {
   if (msg.author.bot) return;
   if (!msg.content.startsWith("SAY ")) return;
 
-  // 파일에서 sayEnabled 읽어오기
+  // sayEnabled 읽어오기
   const state = JSON.parse(fs.readFileSync(statePath, "utf8"));
   if (!state.sayEnabled) return;
 
@@ -79,12 +78,12 @@ client.on("interactionCreate", async interaction => {
     await command.execute(interaction);
   } catch (err) {
     console.error(err);
-    await interaction.reply({ content: "😥 명령 실행 중 오류 발생!", ephemeral: true });
+    await interaction.reply({ content: " 명령 실행 중 오류 발생!", ephemeral: true });
   }
 });
 
 client.once("clientReady", () => {
-  console.log(`🤖 로그인 완료! ${client.user.tag}`);
+  console.log(` 로그인 완료! ${client.user.tag}`);
 });
 
 client.login(process.env.TOKEN);

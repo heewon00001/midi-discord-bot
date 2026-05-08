@@ -2,7 +2,6 @@ import { REST, Routes, SlashCommandBuilder } from "discord.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-// 🔧 명령어 등록
 const commands = [
   new SlashCommandBuilder()
     .setName("say")
@@ -42,23 +41,23 @@ const commands = [
     )
 ];
 
-// ✅ 환경 변수 불러오기
+//  환경 변수 
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 const CLIENT_ID = process.env.CLIENT_ID;
-const GUILD_ID = process.env.GUILD_ID; // 테스트용 서버 ID 넣기
+const GUILD_ID = process.env.GUILD_ID;
 
 (async () => {
   try {
-    console.log("🚀 명령어 등록 중...");
+    console.log("명령어 등록 중...");
 
-    // ⚡ 서버 한정 명령어 등록 (빠르게 반영됨)
+    // 서버 한정 명령어 등록
     await rest.put(
       Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
       { body: commands }
     );
-    console.log(`✅ 서버 한정 명령어 등록 완료! (서버 ID: ${GUILD_ID})`);
+    console.log(` 서버 한정 명령어 등록 완료! (서버 ID: ${GUILD_ID})`);
 
   } catch (err) {
-    console.error("❌ 명령어 등록 실패:", err);
+    console.error(" 명령어 등록 실패:", err);
   }
 })();

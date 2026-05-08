@@ -8,6 +8,6 @@ export default {
     if (!connection)
       return interaction.reply({ content: "지금 아무 음성 채널에도 없는데??", ephemeral: true });
     connection.destroy();
-    await interaction.reply({ content: "👋 나 갈게 바이바이" });
+    await interaction.reply({ content: "나감 ㅂㅂ" });
   },
 };
